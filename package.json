@@ -1,0 +1,21 @@
+{
+  "name": "pokebot-slack",
+  "version": "0.0.1",
+  "main": "main.js",
+  "author": "Anirudha Simha",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Rudhi-/PokeBot-Slack.git"
+  },
+  "keywords": [
+    "Slack",
+    "Bot",
+    "slackbot",
+    "pokemon",
+    "pokebot"
+  ],
+  "dependencies": {
+    "botkit": "^0.2.2",
+    "request": "^2.74.0"
+  }
+}
