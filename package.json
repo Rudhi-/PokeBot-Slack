@@ -15,7 +15,9 @@
     "pokebot"
   ],
   "dependencies": {
+    "async": "^2.0.1",
     "botkit": "^0.2.2",
+    "localtunnel": "^1.8.1",
     "request": "^2.74.0"
   }
 }
