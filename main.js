@@ -41,17 +41,15 @@ tunnel.on('close', function () {
 controller.hears([/I choose you ([^0-9]+)/i, /go ([^0-9]+)/i], ['direct_message', 'direct_mention', 'mention', 'ambient'], function (bot, message) {
     var request = require("./node_modules/request");
     var pokemon = message.match[1].toLowerCase().trim();
-    //This site no longer works :(
-    /*request("http://pokeapi.co/api/v2/pokemon/" + pokemon, function (error, response, body) {
+    request("http://pokeapi.co/api/v2/pokemon/" + pokemon, function (error, response, body) {
         if (JSON.parse(body).detail != "Not found.") {
             bot.reply(message, {
                 "username": "pokebot",
                 "attachments": [
                     {
                         "title": pokemon,
-                       "title_link": "http://sprites.pokecheck.org/i/" + pad(Number(JSON.parse(body).id), 3) + ".gif",
-                       "image_url": "http://sprites.pokecheck.org/i/" + pad(Number(JSON.parse(body).id), 3) + ".gif"
-
+                        "title_link": "http://sprites.pokecheck.org/i/" + pad(Number(JSON.parse(body).id), 3) + ".gif",
+                        "image_url": "http://sprites.pokecheck.org/i/" + pad(Number(JSON.parse(body).id), 3) + ".gif"
                     }
                 ]
             });
@@ -59,31 +57,7 @@ controller.hears([/I choose you ([^0-9]+)/i, /go ([^0-9]+)/i], ['direct_message'
         else {
             bot.reply(message, "Pokemon not found! Did you type its name correctly?");
         }
-    });*/
-
-    // New sie that works! :)
-
-    var url = "http://www.pokestadium.com/sprites/xy/"+pokemon+".gif";
-    request(url, function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-            bot.reply(message, {
-                "username": "pokebot",
-                "attachments": [
-                    {
-                        "title": pokemon,
-                        "title_link":url,
-                        "image_url":url
-                    }
-                ]
-            });
-        }
-        else{
-            bot.reply(message, "Pokemon not found! Did you type its name correctly?");
-        }
     });
-
-
-
 });
 
 controller.hears([/hello/i], ['direct_message', 'direct_mention', 'mention', 'ambient'], function (bot, message) {
